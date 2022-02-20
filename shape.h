@@ -18,6 +18,8 @@ class Shape {
          * @param color RGB Color to draw
          */
         Shape(float thickness, int color[3]);
+        
+        // Dummy constructor for empty object declarations
         Shape(){};
         
         /**

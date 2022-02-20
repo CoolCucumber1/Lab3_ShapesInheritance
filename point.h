@@ -22,6 +22,8 @@ class Point: public Shape {
          * @param ay Y coordinate of the point
          */
         Point(float thickness, int color[3], float ax, float ay);
+
+        // Dummy constructor for empty object declarations
         Point(){};
 
         void setX(float ax);

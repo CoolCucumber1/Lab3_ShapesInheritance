@@ -22,6 +22,9 @@ class LineSegment: public Shape {
          * @param b The second point
          */
         LineSegment(float thickness, int color[3], Point a, Point b);
+
+        // Dummy constructor for empty object declarations
+        LineSegment(){};
         
         /**
          * Update the first point
