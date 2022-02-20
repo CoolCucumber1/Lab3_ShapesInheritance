@@ -15,7 +15,7 @@ class LineSegment: public Shape {
     
     public:
         /**
-         * An alternative line segment constructor that accepts point objects
+         * Line segment constructor that accepts point objects
          * @param thickness Thickness of pen drawing
          * @param color Color to draw
          * @param a The first point
@@ -24,19 +24,17 @@ class LineSegment: public Shape {
         LineSegment(float thickness, int color[3], Point a, Point b);
         
         /**
-         * Update the coordinates of the first point
-         * @param ax X coordinate of first point
-         * @param ay Y coordinate of first point
+         * Update the first point
+         * @param a Set the point a
          */
-        void setA(float ax, float ay);
+        void setA(Point a);
         
         
         /**
-         * Update the coordinates of the second point
-         * @param bx X coordinate of second point
-         * @param by Y coordinate of second point
+         * Update the second point
+         * @param b Set the point b
          */
-        void setB(float bx, float by);
+        void setB(Point b);
 
         /**
          * Return the first point on the line segment

@@ -7,8 +7,7 @@
 using namespace std;
 
 /**
- * An alternative line segment constructor that accepts point objects
- * @param canvas Reference to the canvas on which this should be drawn
+ * Line segment constructor that accepts point objects
  * @param thickness Thickness of pen drawing
  * @param color Color to draw
  * @param a The first point
@@ -21,25 +20,22 @@ LineSegment::LineSegment(float thickness, int color[3],
 }
 
 /**
- * Update the coordinates of the first point
- * @param ax X coordinate of first point
- * @param ay Y coordinate of first point
+ * Update the first point
+ * @param a Set the point a
  */
-void LineSegment::setA(float ax, float ay) {
-    Point seta(thickness, color, ax, ay);
-    this->a = seta;
+void LineSegment::setA(Point a) {
+    this->a = a;
 }
 
 
 /**
- * Update the coordinates of the second point
- * @param bx X coordinate of second point
- * @param by Y coordinate of second point
+ * Update the first point
+ * @param a Set the point a
  */
-void LineSegment::setB(float bx, float by) {
-    Point setb(thickness, color, bx, by);
-    this->b = setb;
+void LineSegment::setB(Point b) {
+    this->b = b;
 }
+
 
 
 /**
