@@ -1,4 +1,4 @@
-#include <iostream>
+#include "simplecanvas/simplecanvas.h"
 #include <string>
 #include "shape.h"
 using namespace std;
@@ -31,15 +31,22 @@ void Shape::setThickness(float thickness) {
 /**
  * Subclasses should override this method to actually draw things
  */
-void Shape::draw() {
+void Shape::draw(SimpleCanvas* canvas) {
     cout << "Warning: Calling draw on base class";
 }
 
+/**
+ * Subclasses should override this method to compute an appropriate area
+ */
 float Shape::getArea() {
     cout << "Warning: Calling getArea on base class";
     return 0;
 }
 
+/**
+ * Subclasses should override this method to return an appropriate string
+ * defining this shape
+ */
 string Shape::toString() {
     return "Shape";
 }

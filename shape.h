@@ -1,6 +1,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include "simplecanvas/simplecanvas.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -33,7 +34,7 @@ class Shape {
         /**
          * Subclasses should override this method to actually draw things
          */
-        void draw();
+        void draw(SimpleCanvas* canvas);
         /**
          * Subclasses should override this method to compute an appropriate area
          */
