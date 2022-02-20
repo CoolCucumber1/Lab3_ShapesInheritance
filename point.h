@@ -16,12 +16,12 @@ class Point: public Shape {
     public:
         /**
          * Constructor for a point
-         * @param thickness Thickness of pen drawing
+         * @param thickness Radius of the point when drawing
          * @param color Color to draw
          * @param ax X coordinate of the point
          * @param ay Y coordinate of the point
          */
-        Point(SimpleCanvas* canvas, float thickness, int color[3], float ax, float ay);
+        Point(float thickness, int color[3], float ax, float ay);
         Point(){};
 
         void setX(float ax);
@@ -29,7 +29,7 @@ class Point: public Shape {
         float getX();
         float getY();
         float getArea();
-        void draw();
+        void draw(SimpleCanvas* canvas);
         string toString();
 };
 

@@ -15,25 +15,13 @@ class LineSegment: public Shape {
     
     public:
         /**
-         * Line segment constructor
-         * @param thickness Thickness of pen drawing
-         * @param color Color to draw
-         * @param ax X coordinate of first point
-         * @param ay Y coordinate of first point
-         * @param bx X coordinate of second point
-         * @param by Y coordinate of second point
-         */
-        LineSegment(SimpleCanvas* canvas, float thickness, int color[3],
-                        float ax, float ay, float bx, float by);
-        
-        /**
          * An alternative line segment constructor that accepts point objects
          * @param thickness Thickness of pen drawing
          * @param color Color to draw
          * @param a The first point
          * @param b The second point
          */
-        LineSegment(SimpleCanvas* canvas, float thickness, int color[3], Point a, Point b);
+        LineSegment(float thickness, int color[3], Point a, Point b);
         
         /**
          * Update the coordinates of the first point
@@ -62,7 +50,12 @@ class LineSegment: public Shape {
          * @return 0; A line segment has zero area
          */
         float getArea();
-        void draw();
+
+        /**
+         * Draw the line segment to a particular canvas
+         * @param canvas Pointer to canvas
+         */
+        void draw(SimpleCanvas* canvas);
         string toString();
 };
 

@@ -3,8 +3,7 @@
 #include "shape.h"
 using namespace std;
 
-Shape::Shape(SimpleCanvas* canvas, float thickness, int color[3]) {
-    this->canvas = canvas;
+Shape::Shape(float thickness, int color[3]) {
     this->thickness = thickness;
     for (int k = 0; k < 3; k++) {
         this->color[k] = color[k];

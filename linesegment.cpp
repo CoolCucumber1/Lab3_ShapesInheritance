@@ -7,32 +7,15 @@
 using namespace std;
 
 /**
- * Line segment constructor
- * @param thickness Thickness of pen drawing
- * @param color Color to draw
- * @param ax X coordinate of first point
- * @param ay Y coordinate of first point
- * @param bx X coordinate of second point
- * @param by Y coordinate of second point
- */
-LineSegment::LineSegment(SimpleCanvas* canvas, float thickness, int color[3],
-                    float ax, float ay, float bx, float by)
-                    :Shape(canvas, thickness, color) {
-    Point thisa(canvas, thickness, color, ax, ay);
-    Point thisb(canvas, thickness, color, bx, by);
-    this->a = thisa;
-    this->b = thisb;
-}
-
-/**
  * An alternative line segment constructor that accepts point objects
+ * @param canvas Reference to the canvas on which this should be drawn
  * @param thickness Thickness of pen drawing
  * @param color Color to draw
  * @param a The first point
  * @param b The second point
  */
-LineSegment::LineSegment(SimpleCanvas* canvas, float thickness, int color[3], 
-                        Point a, Point b):Shape(canvas, thickness, color) {
+LineSegment::LineSegment(float thickness, int color[3], 
+                        Point a, Point b):Shape(thickness, color) {
     this->a = a;
     this->b = b;
 }
@@ -43,7 +26,7 @@ LineSegment::LineSegment(SimpleCanvas* canvas, float thickness, int color[3],
  * @param ay Y coordinate of first point
  */
 void LineSegment::setA(float ax, float ay) {
-    Point seta(canvas, thickness, color, ax, ay);
+    Point seta(thickness, color, ax, ay);
     this->a = seta;
 }
 
@@ -54,7 +37,7 @@ void LineSegment::setA(float ax, float ay) {
  * @param by Y coordinate of second point
  */
 void LineSegment::setB(float bx, float by) {
-    Point setb(canvas, thickness, color, bx, by);
+    Point setb(thickness, color, bx, by);
     this->b = setb;
 }
 
@@ -77,7 +60,11 @@ float LineSegment::getArea() {
     return 0.0;
 }
 
-void LineSegment::draw() {
+/**
+ * Draw the line segment to a particular canvas
+ * @param canvas Pointer to canvas
+ */
+void LineSegment::draw(SimpleCanvas* canvas) {
     canvas->drawLine(a.getX(), a.getY(), b.getX(), b.getY(), thickness, color[0], color[1], color[2]);
 }
 

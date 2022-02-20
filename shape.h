@@ -1,14 +1,12 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include "simplecanvas/simplecanvas.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 class Shape {
     protected:
-        SimpleCanvas* canvas;
         float thickness;
         int color[3];
     
@@ -18,7 +16,7 @@ class Shape {
          * @param thickness Thickness of pen drawing
          * @param color RGB Color to draw
          */
-        Shape(SimpleCanvas* canvas, float thickness, int color[3]);
+        Shape(float thickness, int color[3]);
         Shape(){};
         
         /**
