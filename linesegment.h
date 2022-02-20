@@ -37,6 +37,18 @@ class LineSegment: public Shape {
          * @param by Y coordinate of second point
          */
         void setB(float bx, float by);
+
+        /**
+         * Return the first point on the line segment
+         * @return Point The first point
+         */
+        Point getA();
+
+        /**
+         * Return the first point on the line segment
+         * @return Point The first point
+         */
+        Point getB();
         
         /**
          * Get the length of this line segment by using the 

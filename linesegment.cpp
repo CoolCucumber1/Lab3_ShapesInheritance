@@ -41,6 +41,23 @@ void LineSegment::setB(float bx, float by) {
     this->b = setb;
 }
 
+
+/**
+ * Return the first point on the line segment
+ * @return Point The first point
+ */
+Point LineSegment::getA() {
+    return a;
+}
+
+/**
+ * Return the first point on the line segment
+ * @return Point The first point
+ */
+Point LineSegment::getB(){
+    return b;
+}
+
 /**
  * Get the length of this line segment by using the 
  * Pythagorean theorem
