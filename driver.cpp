@@ -1,6 +1,4 @@
-#include "shape.h"
-#include "point.h"
-#include "linesegment.h"
+#include "shapes.h"
 #include "simplecanvas/simplecanvas.h"
 #include <iostream>
 
