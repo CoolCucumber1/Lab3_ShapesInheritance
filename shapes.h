@@ -118,5 +118,111 @@ class LineSegment: public Shape {
         string toString();
 };
 
+class Triangle:public Shape {
+    private:
+        Point a;
+        Point b;
+        Point c;
+        LineSegment ab;
+        LineSegment bc;
+        LineSegment ca;
 
+    public:
+        /**
+         * Constructor for a triangle
+         * @param thickness Thickness of pen drawing
+         * @param color Color to draw
+         * @param a The first point
+         * @param b The second point
+         * @param c The third point
+         */
+        Triangle(float thickness, int color[3], Point a, Point b, Point c);
+
+        // Dummy constructor for empty object declarations
+        Triangle(){};
+
+        /**
+         * Get the area of a triangle
+         * @return The area of the triangle
+         */
+        float getArea();
+
+        /**
+         * Draw the triangle to a particular canvas
+         * @param canvas Pointer to canvas
+         */
+        void draw(SimpleCanvas* canvas);
+        string toString();
+};
+
+class Square:public Shape {
+    private:
+        Point center;
+        float length;
+        LineSegment a;
+        LineSegment b;
+        LineSegment c;
+        LineSegment d;
+
+    public:
+        /**
+         * Constructor for a square
+         * @param thickness Thickness of pen drawing
+         * @param color Color to draw
+         * @param center Center point of the square
+         * @param length Length of all square sides
+         */
+        Square(float thickness, int color[3], Point center, float length);
+
+        // Dummy constructor for empty object declarations
+        Square(){};
+
+        /**
+         * Get the area of a square
+         * @return The area of the square
+         */
+        float getArea();
+
+        /**
+         * Draw the square to a particular canvas
+         * @param canvas Pointer to canvas
+         */
+        void draw(SimpleCanvas* canvas);
+        string toString();
+};
+
+class Circle:public Shape {
+    private:
+        Point center;
+        float radius;
+        int NOS;
+        LineSegment* segments;
+
+    public:
+        /**
+         * Constructor for a circle
+         * @param thickness Thickness of pen drawing
+         * @param color Color to draw
+         * @param center Center point of the circle
+         * @param radius Radius of the circle
+         * @param NOS Number of sides that circle will have
+         */
+        Circle(float thickness, int color[3], Point center, float radius, int NOS);
+
+        // Dummy constructor for empty object declarations
+        Circle(){};
+
+        /**
+         * Get the area of a circle
+         * @return The area of the circle
+         */
+        float getArea();
+
+        /**
+         * Draw the circle to a particular canvas
+         * @param canvas Pointer to canvas
+         */
+        void draw(SimpleCanvas* canvas);
+        string toString();
+}; 
 #endif

@@ -161,3 +161,145 @@ string LineSegment::toString() {
 
 /////////////////////////////////////////////////////
 // TODO: Fill in Triangle, Square, and Circle
+
+/**
+ * Constructor for a triangle
+ * @param thickness Thickness of pen drawing
+ * @param color Color to draw
+ * @param a The first point
+ * @param b The second point
+ * @param c The third point
+ */
+
+Triangle::Triangle(float thickness, int color[3], 
+                   Point a, Point b, Point c):Shape(thickness, color) {
+    this->a = a;
+    this->b = b;
+    this->c = c;
+    this->ab = LineSegment(thickness, color, a, b);
+    this->bc = LineSegment(thickness, color, b, c);
+    this->ca = LineSegment(thickness, color, c, a);
+}   
+/**
+ * Get the area of a triangle
+ * @return The area of the triangle
+ */
+float Triangle::getArea() {
+    float s = (ab.getLength() + bc.getLength() + ca.getLength()) / 2;
+    return sqrt(s * (s - ab.getLength()) * (s - bc.getLength()) * (s - ca.getLength()));
+}
+
+/**
+ * Draw the triangle to a particular canvas
+ * @param canvas Pointer to canvas
+ */
+void Triangle::draw(SimpleCanvas* canvas) {
+    ab.draw(canvas);
+    bc.draw(canvas);
+    ca.draw(canvas);
+}
+
+string Triangle::toString() {
+    stringstream stream;
+    stream << "Triangle between " << a.toString() + ", " << b.toString() + ", and " << c.toString();
+    return stream.str();
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Constructor for a square
+ * @param thickness Thickness of pen drawing
+ * @param color Color to draw
+ * @param center Center point of the square
+ * @param length Length of all square sides
+ */
+
+Square::Square(float thickness, int color[3], 
+               Point center, float length):Shape(thickness, color) {
+    this->center = center;
+    this->length = length;
+    float HalfLength = length / 2;
+    this->a = LineSegment(thickness, color, 
+                Point(thickness, color, center.getX() - HalfLength, center.getY() - HalfLength), 
+                Point(thickness, color, center.getX() + HalfLength, center.getY() - HalfLength));
+    this->b = LineSegment(thickness, color, 
+                Point(thickness, color, center.getX() + HalfLength, center.getY() - HalfLength), 
+                Point(thickness, color, center.getX() + HalfLength, center.getY() + HalfLength));
+    this->c = LineSegment(thickness, color, 
+                Point(thickness, color, center.getX() + HalfLength, center.getY() + HalfLength), 
+                Point(thickness, color, center.getX() - HalfLength, center.getY() + HalfLength));
+    this->d = LineSegment(thickness, color, 
+                Point(thickness, color, center.getX() - HalfLength, center.getY() + HalfLength), 
+                Point(thickness, color, center.getX() - HalfLength, center.getY() - HalfLength));
+}
+/**
+ * Get the area of a square
+ * @return The area of the square
+ */
+float Square::getArea() {
+    return length * length;
+}
+
+/**
+ * Draw the square to a particular canvas
+ * @param canvas Pointer to canvas
+ */
+void Square::draw(SimpleCanvas* canvas) {
+    a.draw(canvas);
+    b.draw(canvas);
+    c.draw(canvas);
+    d.draw(canvas);
+}
+
+string Square::toString() {
+    stringstream stream;
+    stream << "Square with center at " << center.toString() + " and length " << length;
+    return stream.str();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Constructor for a circle
+ * @param thickness Thickness of pen drawing
+ * @param color Color to draw
+ * @param center Center point of the circle
+ * @param radius Radius of the circle
+ * @param NOS Number is sides that circle will have
+ */
+
+Circle::Circle(float thickness, int color[3], 
+               Point center, float radius, int NOS):Shape(thickness, color) {
+    this->center = center;
+    this->radius = radius;
+    this->NOS = NOS;
+               }
+/**
+ * Get the area of a circle
+ * @return The area of the circle
+ */
+float Circle::getArea() {
+    return M_PI * radius * radius;
+}
+
+/**
+ * Draw the circle to a particular canvas
+ * @param canvas Pointer to canvas
+ */
+void Circle::draw(SimpleCanvas* canvas) {
+    for (int i = 0; i < NOS; i++) {
+        float x1 = center.getX() + radius * cos((2 * M_PI * i) / NOS);
+        float y1 = center.getY() + radius * sin((2 * M_PI * i) / NOS);
+        float x2 = center.getX() + radius * cos((2 * M_PI * (i + 1)) / NOS);
+        float y2 = center.getY() + radius * sin((2 * M_PI * (i + 1)) / NOS);
+        LineSegment line(thickness, color, Point(thickness, color, x1, y1), Point(thickness, color, x2, y2));
+        line.draw(canvas);
+    }
+}
+
+string Circle::toString() {
+    stringstream stream;
+    stream << "Circle with center at " << center.toString() + " with a radius of " << radius;
+    return stream.str();
+}
+////////////////////////////////////////////////////////////////////////////////////////
